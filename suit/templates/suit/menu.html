@@ -19,6 +19,22 @@
                 {% endfor %}
             </ul>
         {% endif %}
+        <ul class="suit-nav-right">
+            {% if suit_layout != 'horizontal' %}
+                <li><hr></li>
+            {% endif %}
+            <li class="has-children">
+                {% if suit_layout == 'horizontal' %}
+                    <a href="{% url 'admin:index' %}?__suit_layout=vertical">
+                        <i class="fa fa-bars"></i> Menu na Vertical
+                    </a>
+                {% else %}
+                    <a href="{% url 'admin:index' %}?__suit_layout=horizontal">
+                        <i class="fa fa-bars"></i> Menu na Horizontal
+                    </a>
+                {% endif %}
+            </li>
+        </ul>
     </div>
     {% if suit_layout == 'horizontal' and menu and menu.active_parent_item %}
         <div id="suit-sub-nav">
