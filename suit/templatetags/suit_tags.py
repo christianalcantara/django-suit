@@ -10,6 +10,13 @@ if django.VERSION < (1, 9):
 else:
     simple_tag = register.simple_tag
 
+@register.filter
+def length_is(value, length):
+    """Retorna True se o comprimento do valor for igual a 'length'."""
+    try:
+        return len(value) == int(length)
+    except (ValueError, TypeError):
+        return False
 
 @register.filter(name='suit_conf')
 def suit_conf(name, request):
